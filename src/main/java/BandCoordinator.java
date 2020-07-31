@@ -1,18 +1,9 @@
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.lang.reflect.Array;
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -22,14 +13,6 @@ public class BandCoordinator {
     public static void main(String[] args){
         //create instance of BandInformation class
         BandInformation data = new BandInformation();
-        
-        //Sort the names list
-        System.out.println(data.bandNamesSort(data.getNameList()));
-        
-        //Sort the set times list
-        System.out.println(data.sortSetTimes(data.getSetList()));
-        
-        System.out.println(data.getHashMap());
         
         //Display my name and email address
         System.out.println("Submitted by: Diana Arita - aritad@csp.edu");
@@ -112,18 +95,18 @@ public class BandCoordinator {
     
     //method to search for set time recursively with binary search
     private static String binarySearchSet(List<Float> list, float keyVal,
-            int low, int high, HashMap<String, Float> map) {
-        int key = (int) keyVal;
-        int mid = (low + high) / 2;
+            float low, float high, HashMap<String, Float> map) {
+        float key = keyVal;
+        int mid = Math.round((low + high) / 2);
         
         //if the element is found, then return it
         if(high < low) {
             //Using the hash map in the parameter, display the key and value depending on the value
             for(Entry<String, Float> entry : map.entrySet()) {
-                if(Objects.equals(list.get(low), entry.getValue())) {
+                if(Objects.equals(list.get(Math.round(low)), entry.getValue())) {
                     return "Band with the closest set time is: " + 
                             entry.getKey() + " has a set time of " + 
-                            list.get(low) + " minutes";
+                            entry.getValue() + " minutes";
                 }
             }
         }

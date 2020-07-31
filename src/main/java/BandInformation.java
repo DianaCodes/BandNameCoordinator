@@ -45,7 +45,7 @@ public class BandInformation {
             //use delimeter to filter by pipe
             sc.useDelimiter(Pattern.compile("[|\n]"));
             
-            while(sc.hasNextLine()) {
+            while(sc.hasNext()) {
                 setName(bandNames,sc.next());
                 setTime(setTimes,sc.nextFloat());
             }
